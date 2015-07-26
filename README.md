@@ -32,4 +32,6 @@ Details on all the steps in the script can be found in the comments inside the s
     * -mean() *`was_replaced_by`* Mean
     * -std() *`was_replaced_by`* StdDev
     * -meanFreq() *`was_replaced_by`* MeanFrequency
+    * Prefix 't' *`was_replaced_by`* Time
+    * Prefix 'f' *`was_replaced_by`* Frequency
 5. The average value of each measurement was calculated by subject, activity reducing the data to a summarized version of 180 rows.
