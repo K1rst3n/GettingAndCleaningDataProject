@@ -77,8 +77,6 @@ run_analysis <- function()
     # Save average measurements per subject, activity to file tidy_data_summary.txt
     write.table(tidy, "tidy_data_summary.txt", row.name=FALSE, sep="\t", quote=FALSE)
 
-    write.table(header, "header.txt", row.name=FALSE, sep="\t", quote=FALSE)
-
     # Check that file was correctly created
     if(file.exists("tidy_data_summary.txt")) {
         print("Script was run succesfully, tidy_data_summary.txt with average measurements by subject and activity was created in working directory.")
