@@ -46,7 +46,7 @@ run_analysis <- function()
     featureLabels <- gsub("-meanFreq\\(\\)", " MeanFrequency",featureLabels)
 
     # Create header with column names for data
-    header <- c("subject","activity",featureLabels)
+    header <- c("Subject","Activity",featureLabels)
 
     # Load data from train folder
     trainX <- read.table("UCI HAR Dataset/train/X_train.txt")[features.use]
@@ -65,17 +65,19 @@ run_analysis <- function()
     # Merge train and test data into on set
     mergedData <- rbind(train,test)
 
-    # Add descriptive variable names 
+    # Add descriptive variable names
     colnames(mergedData) <- header
 
     # Change activity column numbers to descriptive activity names
-    mergedData$activity <- factor(mergedData$activity, levels=activityLabels[,1], labels=activityLabels[,2])
+    mergedData$Activity <- factor(mergedData$Activity, levels=activityLabels[,1], labels=activityLabels[,2])
    
     # Group data by subject, activity and take column average for measurements 
-    tidy <- mergedData %>% group_by(subject,activity) %>% summarise_each(funs(mean))
+    tidy <- mergedData %>% group_by(Subject,Activity) %>% summarise_each(funs(mean))
 
     # Save average measurements per subject, activity to file tidy_data_summary.txt
     write.table(tidy, "tidy_data_summary.txt", row.name=FALSE, sep="\t", quote=FALSE)
+
+    write.table(header, "header.txt", row.name=FALSE, sep="\t", quote=FALSE)
 
     # Check that file was correctly created
     if(file.exists("tidy_data_summary.txt")) {
